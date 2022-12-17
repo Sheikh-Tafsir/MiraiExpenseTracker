@@ -4,12 +4,13 @@ const port = 4000;
 const mysql = require('mysql2');
 
 // create the connection to database
-const db = mysql.createConnection({
-    host: '0.0.0.0',
+/*const db = mysql.createConnection({
+    host: '0.0.0.0:6625',
     user: "taf",
     password: "taf30",
     database: 'mirainikki'
-  });
+  });*/
+const db = "mysql://root:mMvqAwWP2AI7a45CVzLd@containers-us-west-178.railway.app:6625/railway";
 
 app.use(express.urlencoded({extended:true}));
 
