@@ -13,7 +13,7 @@ const DB_PORT=process.env.MYSQLPORT || 3306;
 const DB_USER=process.env.MYSQLUSER || 'taf';
 
 // create the connection to database
-const db = mysql.createPool({
+const db = mysql.createConnection({
     host: DB_HOST,
     port: DB_PORT,
     user: DB_USER,
@@ -92,12 +92,12 @@ app.post("/login", (req,res)=>{
         [loginName,loginPassword],
         (err,result) =>{
             if(err){
-                res.render("login", {mess: "abc " + err});
-                //res.render("login", {mess: "name or password is wrong"});
+                //res.render("login", {mess: "abc " + err});
+                res.render("login", {mess: "name or password is wrong"});
             }
-            /*if(result.length >0){
+            if(result.length >0){
                 res.render("login", {mess: "logging in"});
-            }*/
+            }
             else{
                 //console.log("not ok");
                 //res.send({message:"0"});    
@@ -105,8 +105,8 @@ app.post("/login", (req,res)=>{
                 //res.render("index", {bro:0});
                 //messAlert="not ok";
                 //res.redirect("/login");
-                //res.render("login", {mess: "2name or password is wrong"});
-                res.render("login", {mess: result});
+                res.render("login", {mess: "2name or password is wrong"});
+                //res.render("login", {mess: result});
             }
         }
     );
@@ -115,5 +115,5 @@ app.post("/login", (req,res)=>{
 /*app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })*/
-const PORT = 5000;
+const PORT = 5000; 
 app.listen(process.env.PORT || PORT, () =>console.log("running on port " + PORT));
