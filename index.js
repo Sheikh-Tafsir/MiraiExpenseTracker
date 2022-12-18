@@ -2,6 +2,9 @@ const express = require('express')
 const app = express();
 const port = 4000;
 const mysql = require('mysql2');
+const Sequelize = require("sequelize");
+require('dotenv').config()
+
 
 // create the connection to database
 /*const db = mysql.createConnection({
@@ -10,7 +13,21 @@ const mysql = require('mysql2');
     password: "taf30",
     database: 'mirainikki'
   });*/
-const db = "mysql://root:mMvqAwWP2AI7a45CVzLd@containers-us-west-178.railway.app:6625/railway";
+
+const DB_URL=process.env.MYSQL_URL;
+if(!DB_URL){
+    throw Error("database env vars are not set");
+}
+/*const db = new Sequelize(DB_URL,{
+  dialect: 'mysql'
+});*/
+const db = new Sequelize(DB_URL);
+
+
+db.sync();
+db.authenticate();
+
+//const db = "mysql -hcontainers-us-west-178.railway.app -uroot -pmMvqAwWP2AI7a45CVzLd --port 6625 --protocol=TCP railway";
 
 
 app.use(express.urlencoded({extended:true}));
