@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background:url("https://i.pinimg.com/originals/8c/9a/a4/8c9aa4d7b95e6869f1c407fbca360123.jpg");
+    background-size: 100vw 100vh;
+}
+@media screen and (min-width: 992px) {
+    .login{
+        background-color: white;
+        height:50vh;
+        width:36vw;
+        position:relative;
+        top:23vh;
+        left:15vw;
+        text-align: center;
+    }
+    #loginHeader{
+        padding-top:4vh;
+        font-size:2rem;
+        margin-bottom:5vh;
+        transition: linear 0.2s;
+    }
+}
+@media screen and (max-width: 991px) {
+    .login{
+        background-color: white;
+        height:60vh;
+        width:73.5vw;
+        position:relative;
+        top:20vh;
+        left:15vw;
+        text-align: center;
+    }
+    #loginHeader{
+        padding-top:8vh;
+        font-size:2rem;
+        margin-bottom:5vh;
+        transition: linear 0.2s;
+    }
+}
+
+#loginAlert{
+    margin-bottom: 3vh;
+    color:red;
+    font-size: 1.1rem;
+}
+@media screen and (min-width: 992px) {
+    #loginName{
+        border:none;
+        outline: none;
+        height:6vh;
+        width:23vw;
+        padding-left:2vw;
+        border-radius: 20px;
+        font-size: 1rem;
+        background-color: rgb(215, 232, 247);
+        margin-bottom:3vh;
+    }
+    #loginPassword{
+        border:none;
+        outline: none;
+        height:6vh;
+        width:23vw;
+        padding-left:2vw;
+        border-radius: 20px;
+        font-size: 1rem;
+        background-color: rgb(215, 232, 247);
+        margin-bottom:5vh;
+    }
+    #loginButton{
+        background-color: rgb(98,35,230);
+        border:none;
+        height:5vh;
+        width:12vw;
+        color:white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border-radius: 20px;
+        margin-bottom:5vh;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #loginName{
+        border:none;
+        outline: none;
+        height:6vh;
+        width:62vw;
+        padding-left:5vw;
+        border-radius: 20px;
+        font-size: 1rem;
+        background-color: rgb(215, 232, 247);
+        margin-bottom:3vh;
+    }
+    #loginPassword{
+        border:none;
+        outline: none;
+        height:6vh;
+        width:62vw;
+        padding-left:5vw;
+        border-radius: 20px;
+        font-size: 1rem;
+        background-color: rgb(215, 232, 247);
+        margin-bottom:5vh;
+    }
+    #loginButton{
+        background-color: rgb(98,35,230);
+        border:none;
+        height:5vh;
+        width:35vw;
+        color:white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border-radius: 20px;
+        margin-bottom:5vh;
+        cursor: pointer;
+    }
+}
+#gotoSignup{
+    background-color: transparent;
+    border:none;
+    font-size: 1.1rem;
+    color:rgb(77, 77, 233);
+    cursor: pointer;
+}

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name ="viewport" content="width=device-width,initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/signup.css">
         <title>Login</title>
     </head>
     <body>
@@ -11,10 +12,11 @@
             <form action="/signup" method="post" class="signupForm" >
                 <h2 id="signupHeader">Signup here</h2>
                 <p id="signupAlert"><%= messageAlert %></p>
-                <input type="text" id="signupName" name="signupName" placeholder="Write your name">
-                <input type="text" id="signupPassword" name="signupPassword" placeholder="Write your password">
-                <input type="submit" value="Signup" id="signupButton">
-                <input type="button" value="Already have an account?" id="gotoLogin">
+                <input type="text" id="signupName" name="signupName" placeholder="Write your name" required><br/>
+                <input type="text" id="signupPassword" name="signupPassword" placeholder="Write your password" required><br/>
+                <input type="submit" value="Signup" id="signupButton"><br/>
+                <!--<input type="button" value="Already have an account?" id="gotoLogin">-->
+                <a href="/login" id="gotoLogin">Already have an account?</a>
             </form>
         </div>
     </body>
