@@ -5,12 +5,12 @@ const mysql = require('mysql2');
 const Sequelize = require("sequelize");
 require('dotenv').config()
 
-const DB_URL=process.env.MYSQL_URL
-const DB_NAME=process.env.MYSQQLDATABASE || 'mirainikki'
-const DB_HOST=process.env.MYSQLHOST || 'localhost'
-const DB_PASSWORD=process.env.MYSQLPASSWORD || 'taf30'
-const DB_PORT=process.env.MYSQLPORT || 3306
-const DB_USER=process.env.MYSQLUSER || 'taf'
+const DB_URL=process.env.MYSQL_URL;
+const DB_NAME=process.env.MYSQQLDATABASE || 'mirainikki';
+const DB_HOST=process.env.MYSQLHOST || 'localhost';
+const DB_PASSWORD=process.env.MYSQLPASSWORD || 'taf30';
+const DB_PORT=process.env.MYSQLPORT || 3306;
+const DB_USER=process.env.MYSQLUSER || 'taf';
 
 // create the connection to database
 const db = mysql.createPool({
@@ -92,12 +92,12 @@ app.post("/login", (req,res)=>{
         [loginName,loginPassword],
         (err,result) =>{
             if(err){
-                //res.render("login", {mess: "abc " + err});
-                res.render("login", {mess: "name or password is wrong"});
+                res.render("login", {mess: "abc " + err});
+                //res.render("login", {mess: "name or password is wrong"});
             }
-            if(result.length >0){
+            /*if(result.length >0){
                 res.render("login", {mess: "logging in"});
-            }
+            }*/
             else{
                 //console.log("not ok");
                 //res.send({message:"0"});    
@@ -105,8 +105,8 @@ app.post("/login", (req,res)=>{
                 //res.render("index", {bro:0});
                 //messAlert="not ok";
                 //res.redirect("/login");
-                res.render("login", {mess: "name or password is wrong"});
-                //res.render("login", {mess: result});
+                //res.render("login", {mess: "2name or password is wrong"});
+                res.render("login", {mess: result});
             }
         }
     );
