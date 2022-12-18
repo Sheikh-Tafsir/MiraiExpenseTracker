@@ -5,29 +5,31 @@ const mysql = require('mysql2');
 const Sequelize = require("sequelize");
 require('dotenv').config()
 
+const DB_URL=process.env.MYSQL_URL
+const DB_NAME=process.env.MYSQQLDATABASE || 'mirainikki'
+const DB_HOST=process.env.MYSQLHOST || 'localhost'
+const DB_PASSWORD=process.env.MYSQLPASSWORD || 'taf30'
+const DB_PORT=process.env.MYSQLPORT || 3306
+const DB_USER=process.env.MYSQLUSER || 'taf'
 
 // create the connection to database
+const db = mysql.createPool({
+    host: DB_HOST,
+    port: DB_PORT,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME
+});
+
+
+
 /*const db = mysql.createConnection({
-    host: '0.0.0.0:6625',
+    host: 'localhost',
+    port:'3306',
     user: "taf",
     password: "taf30",
-    database: 'mirainikki'
-  });*/
-
-const DB_URL=process.env.MYSQL_URL;
-if(!DB_URL){
-    throw Error("database env vars are not set");
-}
-/*const db = new Sequelize(DB_URL,{
-  dialect: 'mysql'
+    database:'mirainikki'
 });*/
-const db = new Sequelize(DB_URL);
-
-
-db.sync();
-db.authenticate();
-
-//const db = "mysql -hcontainers-us-west-178.railway.app -uroot -pmMvqAwWP2AI7a45CVzLd --port 6625 --protocol=TCP railway";
 
 
 app.use(express.urlencoded({extended:true}));
@@ -58,6 +60,7 @@ app.post("/signup", (req,res)=>{
     const signupName= req.body.signupName;
     const signupPassword= req.body.signupPassword;
     console.log(signupName +" "+ signupPassword);
+    
     db.query(
         "INSERT INTO users (name,password) VALUES (?,?)",
         [signupName,signupPassword],
@@ -89,10 +92,10 @@ app.post("/login", (req,res)=>{
         [loginName,loginPassword],
         (err,result) =>{
             if(err){
-
+                //res.render("login", {mess: "abc " + err});
                 res.render("login", {mess: "name or password is wrong"});
             }
-            if(result.length>0){
+            if(result.length >0){
                 res.render("login", {mess: "logging in"});
             }
             else{
@@ -103,6 +106,7 @@ app.post("/login", (req,res)=>{
                 //messAlert="not ok";
                 //res.redirect("/login");
                 res.render("login", {mess: "name or password is wrong"});
+                //res.render("login", {mess: result});
             }
         }
     );
