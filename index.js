@@ -12,9 +12,14 @@ const mysql = require('mysql2');
   });*/
 const db = "mysql://root:mMvqAwWP2AI7a45CVzLd@containers-us-west-178.railway.app:6625/railway";
 
+
 app.use(express.urlencoded({extended:true}));
 
 app.set("view engine", "ejs");
+
+app.use(async ctx=> {
+    ctx.body = 'Hello World from Railway';
+});
 
 let ara=[];
 let messAlert="";
@@ -86,6 +91,8 @@ app.post("/login", (req,res)=>{
     );
 });
 
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+})*/
+const PORT = 5000;
+app.listen(process.env.PORT || PORT, () =>console.log("running on port " + PORT));
