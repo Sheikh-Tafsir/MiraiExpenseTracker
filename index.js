@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 require('dotenv').config()
 
 const DB_URL=process.env.MYSQL_URL;
-const DB_NAME=process.env.MYSQQLDATABASE || 'mirainikki';
+const DB_NAME=process.env.MYSQLDATABASE || 'mirainikki';
 const DB_HOST=process.env.MYSQLHOST || 'localhost';
 const DB_PASSWORD=process.env.MYSQLPASSWORD || 'taf30';
 const DB_PORT=process.env.MYSQLPORT || 3306;
