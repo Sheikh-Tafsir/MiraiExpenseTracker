@@ -17,9 +17,9 @@ app.use(express.urlencoded({extended:true}));
 
 app.set("view engine", "ejs");
 
-app.use(async ctx=> {
+/*app.use(async ctx=> {
     ctx.body = 'Hello World from Railway';
-});
+});*/
 
 let ara=[];
 let messAlert="";
