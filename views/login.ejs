@@ -17,9 +17,15 @@
                 <input type="submit" value="Login" id="loginButton"><br/>
                 <!--<input type="button" value="don't have an account?" id="gotoSignup">-->
                 <a href="/signup" id="gotoSignup">don't have an account?</a>
+                <a href="/" id="loginSuccessfull"></a>
             </form>
         </div>
     </body>
     <script>
+        var loginButton=document.querySelector("#loginButton");
+        loginButton.addEventListener("load",()=>{
+            var loginAlert=document.querySelector("#loginAlert");
+            alert(loginAlert.innerHTML);
+        });
     </script>
 </html>

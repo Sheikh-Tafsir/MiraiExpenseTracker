@@ -71,8 +71,9 @@ app.post("/signup", (req,res)=>{
                 //res.send({message:"0"});
             }
             else{
-                res.render("signup", {messageAlert: "new user added"});
+                //res.render("signup", {messageAlert: "new user added"});
                 //res.send({message:"value inserted"});
+                res.redirect('/mirai');
                 
             }
         }
@@ -97,7 +98,8 @@ app.post("/login", (req,res)=>{
                 res.render("login", {mess: "name or password is wrong"});
             }
             if(result.length >0){
-                res.render("login", {mess: "logging in"});
+                //res.render("login", {mess: "logging in"});
+                res.redirect('/mirai');
             }
             else{
                 //console.log("not ok");
@@ -112,7 +114,9 @@ app.post("/login", (req,res)=>{
         }
     );
 });
-
+app.get('/mirai', (req, res) => {
+    res.render("mirai", {messageAlert: messAlert});
+});
 /*app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })*/

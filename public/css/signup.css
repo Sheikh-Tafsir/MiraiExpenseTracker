@@ -80,6 +80,7 @@ body{
         border-radius: 20px;
         margin-bottom:5vh;
         cursor: pointer;
+        transition: 0.1s linear;
     }
 }
 @media screen and (max-width: 991px) {
@@ -116,7 +117,11 @@ body{
         border-radius: 20px;
         margin-bottom:5vh;
         cursor: pointer;
+        transition: 0.1s linear;
     }
+}
+#signupButton:hover{
+    transform: scale(1.1);
 }
 #gotoLogin{
     background-color: transparent;
