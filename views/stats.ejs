@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name ="viewport" content="width=device-width,initial-scale=1.0" />
-        <link rel="stylesheet" href="/css/mirai.css">
+        <link rel="stylesheet" href="/css/stats.css">
         <link href="/css/hamburgers.css" rel="stylesheet">
         <title>Document</title>
     </head>
@@ -20,39 +20,57 @@
             </div>
             <div class="navmenu">
                 <a href="/">Home</a>
-                <a href="/stats">Stats</a>
+                <a href="/mirai">Expense</a>
                 <button class="heroSectionDescBut">Get Started</button>
             </div>
         </div>
 
-        <div class="mirai">
-            <form action="/mirai" method="post" class="miraiForm">
-                <h2 id="miraiHeader">Add Today's Expenses</h2>
-                <p id="miraiAlert"><%= mess %></p>
-                <input type="text" id="miraiCredit" name="miraiCredit" placeholder="Write todays credit"><br/>
-                <input type="text" id="miraiDebit" name="miraiDebit" placeholder="Write todays debit"><br/>
-                <input type="submit" value="Submit" id="miraiButton"><br/>
-                <input type="text" id="miraiName" name="miraiName"><br/>
-                <input type="text" id="miraiDate" name="miraiDate"><br/>
-                <!--<input type="button" value="don't have an account?" id="gotoSignup">-->
-            </form>
+        <div class="stats">
+            <h1 class="userName"></h1>
+            <p>Welcome back</p>
+            <button id="showStatsBut">Show Statistics</button>
+            <div class="todStats">
+                <div class="todStat">
+                    <p>Date</p>
+                    <h1><%= statara[0] %></h1>
+                </div>
+                <div class="todStat">
+                    <p>Credit</p>
+                    <h1><%= statara[1] %></h1>
+                </div>
+                <div class="todStat">
+                    <p>Debit</p>
+                    <h1><%= statara[2] %></h1>
+                </div>
+            </div>
         </div>
-        
+
+        <form action="/stats" method="post" class="statsForm">
+            <input type="text" id="statsName" name="statsName"><br/>
+            <input type="text" id="statsDate" name="statsDate"><br/>
+            <input type="submit" value="Submit" id="statsButton"><br/>
+        </form>
         <script>
+
             window.addEventListener("load",()=>{
                 localStorage.setItem("logStatus", "1");
                 var username=localStorage.getItem("username");
-                var miraiName=document.querySelector("#miraiName");
-                miraiName.value=username;  
+
+                var statsName=document.querySelector("#statsName");
+                statsName.value=username; 
+
                 var date = new Date();
-                var miraiDate=document.querySelector("#miraiDate");
+                var statsDate=document.querySelector("#statsDate");
                 let day = date.getDate();
                 let month = date.getMonth() + 1;
                 let year = date.getFullYear();
 
                 // This arrangement can be altered based on how we want the date's format to appear.
                 let currentDate = `${day}-${month}-${year}`;
-                miraiDate.value=currentDate;
+                statsDate.value=currentDate;
+
+                var thisUserName=document.querySelector(".userName");
+                thisUserName.innerHTML="Hello "+ username;
             });
 
             var navButCount=0;
@@ -85,6 +103,14 @@
 
                 }
             });
+
+            var showStatsBut=document.querySelector("#showStatsBut");
+            showStatsBut.addEventListener("click",()=>{
+                var statsButton=document.querySelector("#statsButton");
+                statsButton.click();
+            });
+
+            
         </script>
     </body>
 </html>

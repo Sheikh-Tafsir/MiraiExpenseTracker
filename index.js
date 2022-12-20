@@ -41,6 +41,7 @@ app.set("view engine", "ejs");
     ctx.body = 'Hello World from Railway';
 });*/
 
+let statara=[];
 let ara=[];
 let messAlert="";
 
@@ -115,8 +116,136 @@ app.post("/login", (req,res)=>{
     );
 });
 app.get('/mirai', (req, res) => {
-    res.render("mirai", {messageAlert: messAlert});
+    res.render("mirai", {mess: messAlert});
 });
+app.post("/mirai", (req,res)=>{
+    const miraiCredit= req.body.miraiCredit;
+    const miraiDebit= req.body.miraiDebit;
+    const miraiName= req.body.miraiName;
+    const miraiDate= req.body.miraiDate;
+    //console.log("mirai " + miraiName +" "+ miraiDate +" "+ miraiCredit +" "+ miraiDebit);
+    
+    var flag=0;
+
+    db.query(
+        "Select * from expenses where name = ? AND date = ?",
+        [miraiName,miraiDate],
+        (err,result) =>{
+            if(err){
+                //console.log(err);
+                //res.render("new", {mess: "abc " + err});
+                res.render("mirai", {mess: "something is wrong"});
+                flag=0;
+                //console.log(flag);
+                expenseAdd(flag);
+            }
+            else if(result.length>=1){
+                flag=1;
+                //console.log(flag);
+                expenseAdd(flag);
+            }
+            else{
+                flag=2;
+                //console.log(flag);
+                expenseAdd(flag);
+                //console.log(result.length);
+                //res.render("mirai", {mess: "todays expenses added"});
+            }
+        }
+    );
+
+    //console.log("exces"+ flag);
+    function expenseAdd(flag){
+        //console.log("exces"+ flag);
+        
+        if(flag == 0){
+            //console.log("some problem");
+        }
+        else if(flag == 2){
+            db.query(
+                "INSERT INTO expenses (name,date,credit,debit) VALUES (?,?,?,?)",
+                [miraiName,miraiDate,miraiCredit,miraiDebit],
+                (err,result) =>{
+                    if(err){
+                        //console.log(err);
+                        //res.render("login", {mess: "abc " + err});
+                        res.render("mirai", {mess: "something is wrong"});
+                    }
+                    else{
+                        res.render("mirai", {mess: "todays expenses added"});
+                    }
+                }
+            );
+        }
+        else{
+            //console.log("yes in 1");
+            db.query(
+                "UPDATE expenses SET credit = credit + ? WHERE name = ? AND date = ?",
+                [miraiCredit,miraiName,miraiDate],
+                (err,result) =>{
+                    if(err){
+                        //console.log(err);
+                        //res.render("login", {mess: "abc " + err});
+                        res.render("mirai", {mess: "something is wrong"});
+                    }
+                    else{
+                    }
+                }
+            );
+
+            db.query(
+                "UPDATE expenses SET debit = debit + ? WHERE name = ? AND date = ?",
+                [miraiDebit,miraiName,miraiDate],
+                (err,result) =>{
+                    if(err){
+                        //console.log(err);
+                        //res.render("login", {mess: "abc " + err});
+                        res.render("mirai", {mess: "something is wrong"});
+                    }
+                    else{
+                        res.render("mirai", {mess: "todays expenses added"});
+                    }
+                }
+            );
+        }
+
+    }
+});
+
+
+app.get('/stats', (req, res) => {
+    //res.render("stats", {mess: messAlert});
+    res.render("stats", {statara : statara});
+});
+
+app.post('/stats', (req, res) => {
+    const statsName= req.body.statsName;
+    const statsDate= req.body.statsDate;
+    db.query(
+        "Select * from expenses where name = ? AND date = ?",
+        [statsName,statsDate],
+        (err,result) =>{
+            if(err){
+                //console.log(err);
+                //res.render("new", {mess: "abc " + err});
+                res.render("stats", {mess: "something is wrong"});
+                flag=0;
+                //console.log(flag);
+                expenseAdd(flag);
+            }
+            else if(result.length>=1){
+                //var statara=[];
+                //statara.push(result);
+                //console.log(result[0]["date"]);
+                res.render("stats", {statara: [result[0]["date"],result[0]["credit"],result[0]["debit"] ] });
+            }
+            else{
+                res.render("stats", {mess: "user don't exist"});
+            }
+        }
+    );
+});
+
 /*app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })*/

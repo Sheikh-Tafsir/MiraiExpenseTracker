@@ -27,5 +27,12 @@
             var loginAlert=document.querySelector("#loginAlert");
             alert(loginAlert.innerHTML);
         });
+
+        document.querySelector("#loginButton").addEventListener("click",()=>{
+            var loginName=document.querySelector("#loginName").value;
+            localStorage.setItem("username", loginName);
+            /*var username=localStorage.getItem("username");
+            alert(username);*/
+        });
     </script>
 </html>
