@@ -24,6 +24,9 @@ body{
     height:100%;
     width:45%;
 }
+.navheader button{
+    visibility: hidden;
+}
 .navheader img{
     height:90%;
     width:15vw;
