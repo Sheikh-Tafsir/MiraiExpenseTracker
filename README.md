@@ -3,13 +3,12 @@
    <img src="https://img.shields.io/badge/language-EJS-red?style"/>
    <img src="https://img.shields.io/github/license/Sheikh-Tafsir/mirai"/>
    <img src="https://img.shields.io/github/stars/Sheikh-Tafsir/mirai"/>
-   <img src="https://img.shields.io/github/forks/Sheikh-Tafsir/mirai/>
+   <img src="https://img.shields.io/github/forks/Sheikh-Tafsir/mirai"/>
 </p>
 
 ## Desktop View
 
 ### Homepage
-             
 ![image](https://user-images.githubusercontent.com/83116065/208975008-580b00db-adcb-4ac8-a9d3-39827b0dec27.png)
 
 ### Stattistics page
