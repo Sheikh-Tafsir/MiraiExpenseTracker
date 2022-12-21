@@ -7,6 +7,7 @@
 </p>
 
 ## Desktop View
+
 ### Homepage
 ![image](https://user-images.githubusercontent.com/83116065/208975008-580b00db-adcb-4ac8-a9d3-39827b0dec27.png)
 
