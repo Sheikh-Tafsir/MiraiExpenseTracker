@@ -25,25 +25,90 @@
             </div>
         </div>
 
-        <div class="stats">
-            <h1 class="userName"></h1>
-            <p>Welcome back</p>
-            <button id="showStatsBut">Show Statistics</button>
-            <div class="todStats">
-                <div class="todStat">
-                    <p>Date</p>
-                    <h1><%= statara[0] %></h1>
+            <div class="stats">
+                <div class="statsHeaddesc">
+                    <h1 class="userName" id="headerName"></h1>
+                    <p>Welcome back</p>
+                    <button id="showStatsBut">Show Statistics</button><br/>
+                    <svg width="100" height="100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.25 22.5v-3.865a3.361 3.361 0 0 0-.94-2.607c3.14-.35 6.44-1.538 6.44-6.99a5.43 5.43 0 0 0-1.5-3.746 5.058 5.058 0 0 0-.09-3.765s-1.18-.35-3.91 1.478a13.397 13.397 0 0 0-7 0C6.52 1.177 5.34 1.527 5.34 1.527a5.058 5.058 0 0 0-.09 3.765 5.43 5.43 0 0 0-1.5 3.775c0 5.413 3.3 6.602 6.44 6.991a3.366 3.366 0 0 0-.94 2.577V22.5"></path>
+                        <path d="M9.25 19.503c-5 1.498-5-2.496-7-2.996"></path>
+                    </svg>
                 </div>
-                <div class="todStat">
-                    <p>Credit</p>
-                    <h1><%= statara[1] %></h1>
+
+                <div class="totStats">
+                    <div class="totStat">
+                        <div class="totStatSvg">
+                            <svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <p>Today's credit is</p>
+                        <h1 class="totper"><%= Math.ceil(statara[3]) %>%</h1>
+                        <p>of Toral credit</p>
+                        <h1 id="totCred"><%= statara[5] %>Taka</h1>
+                    </div>
+                    <div class="totStatPersonal">
+
+                    </div>
+                    <div class="totStat">
+                        <div class="totStatSvg">
+                            <svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                            </svg>
+                        </div>
+                        <p>Today's debit is</p>
+                        <h1 class="totper"><%= Math.ceil(statara[4]) %>%</h1>
+                        <p>of Toral debit</p>
+                        <h1 id="totDeb"><%= statara[6] %> Taka</h1>
+                    </div>
                 </div>
-                <div class="todStat">
-                    <p>Debit</p>
-                    <h1><%= statara[2] %></h1>
+                
+                <div class="todStats">
+                    <div class="todStat">
+                        <div class="todStatDesc">
+                            <p>Date</p>
+                            <h1><%= statara[0] %></h1>
+                        </div>
+                        <div class="todStatSvg">
+                            <svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                                <path d="M16 2v4"></path>
+                                <path d="M8 2v4"></path>
+                                <path d="M3 10h18"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="todStat">
+                        <div class="todStatDesc">
+                            <p>Credit</p>
+                            <h1><%= statara[1] %> Taka</h1>
+                        </div>
+                        <div class="todStatSvg">
+                            <svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1a7 7 0 1 0 0 14 7 7 0 1 0 0-14z"></path>
+                                <path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="todStat">
+                        <div class="todStatDesc">
+                            <p>Debit</p>
+                            <h1><%= statara[2] %> Taka</h1>
+                        </div>
+                        <div class="todStatSvg">
+                            <svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <path d="M3 6h18"></path>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-        </div>
+        
 
         <form action="/stats" method="post" class="statsForm">
             <input type="text" id="statsName" name="statsName"><br/>
@@ -105,10 +170,15 @@
             });
 
             var showStatsBut=document.querySelector("#showStatsBut");
+            //showStatsBut.addEventListener("click",()=>{
+            //var loadCount=0;
+            //showStatsBut.addEventListener("load",()=>{
             showStatsBut.addEventListener("click",()=>{
                 var statsButton=document.querySelector("#statsButton");
                 statsButton.click();
-            });
+                //statsButton.remove();
+
+            }, {once : true});
 
             
         </script>

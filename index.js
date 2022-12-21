@@ -222,8 +222,8 @@ app.post('/stats', (req, res) => {
     const statsName= req.body.statsName;
     const statsDate= req.body.statsDate;
     db.query(
-        "Select * from expenses where name = ? AND date = ?",
-        [statsName,statsDate],
+        "Select * from expenses where name = ?",
+        [statsName],
         (err,result) =>{
             if(err){
                 //console.log(err);
@@ -236,8 +236,17 @@ app.post('/stats', (req, res) => {
             else if(result.length>=1){
                 //var statara=[];
                 //statara.push(result);
-                //console.log(result[0]["date"]);
-                res.render("stats", {statara: [result[0]["date"],result[0]["credit"],result[0]["debit"] ] });
+                let len=result.length -1;
+                //console.log(len)
+                //console.log(result);
+                let debitTot=0;
+                let creditTot=0;
+                for(let i=0;i<=len;i++){
+                    debitTot= debitTot + result[i]["debit"];
+                    creditTot= creditTot + result[i]["credit"]
+                }
+                console.log(debitTot +" "+ creditTot);
+                res.render("stats", {statara: [result[len]["date"],result[len]["credit"],result[len]["debit"],((result[len]["credit"]/creditTot)*100),((result[len]["debit"]/debitTot)*100),creditTot,debitTot] });
             }
             else{
                 res.render("stats", {mess: "user don't exist"});
